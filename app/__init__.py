@@ -11,7 +11,7 @@ login = LoginManager()
 
 login.login_message = "Você deve fazer login para acessar esta página"
 
-bootstrap = Bootratrap()
+bootstrap = Bootstrap()
 
 def create_app(config_class=Config):
 	app = Flask(__name__)
@@ -19,7 +19,7 @@ def create_app(config_class=Config):
 	db.init_app(app)
 	migrate.init_app(app, db)
 	login.init_app(app)
-	boostrap.init_app(app)
+	bootstrap.init_app(app)
 
 	from app.admin import admin as admin_blueprint
 	app.register_blueprint(admin_blueprint, url_prefix="/admin")
@@ -30,6 +30,6 @@ def create_app(config_class=Config):
 	from app.main import main as main_blueprint
 	app.register_blueprint(main_blueprint)
 
-	from app import view, models
+	from app import views, models
 
 	return app
